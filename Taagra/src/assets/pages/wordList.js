@@ -26,15 +26,17 @@ class wordList extends Component {
     componentDidMount = () => {
         start = 0;
         end = 20;
-        page = 0;
+        page = 1;
         this.setState({ data: dictionary.slice(start, end) })
     }
 
     _nextPage = () => {
-        start = end;
-        end = end + 20;
-        page = page + 1;
-        this.setState({ data: dictionary.slice(start, end) })
+        if (page != 132) {
+            start = end;
+            end = end + 20;
+            page = page + 1;
+            this.setState({ data: dictionary.slice(start, end) })
+        }
     }
 
     _previousPage = () => {
@@ -43,7 +45,7 @@ class wordList extends Component {
             end = end - 20;
             this.setState({ data: dictionary.slice(start, end) })
         }
-        if (page != 0) {
+        if (page != 1) {
             page = page - 1
         }
     }
@@ -54,39 +56,51 @@ class wordList extends Component {
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: "#c2b280" }}>
-                <StatusBar barStyle="dark-content" backgroundColor='rgba(207, 102, 16, 0.0)' translucent={true} />
-                <View style={{ marginTop: 50 }}>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginLeft: 20, marginRight: 20, marginBottom: 20 }}>
+            <ScrollView style={{ backgroundColor: "black" }}>
+                <StatusBar barStyle="light-content" backgroundColor='rgba(207, 102, 16, 0.0)' translucent={true} />
+                <ImageBackground source={require('../media/pagebg.jpg')} style={{ width: "100%" }}>
+                    <View style={{ alignSelf: 'center', marginTop: 50, marginBottom: 50 }}>
+                        <Image source={require('../media/dictionarybig.png')} />
+                    </View>
+                </ImageBackground>
+                <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
+                <ImageBackground source={require('../media/mainbg.jpg')} style={{ width: '100%' }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5, marginLeft: 20, marginRight: 20, marginBottom: 10 }}>
                         <Text style={{ fontSize: 30, alignSelf: "center" }}>English</Text>
                         <Text style={{ fontSize: 30, alignSelf: "center" }}>Ta'agra</Text>
                     </View>
-                    {this.state.data.map(a => {
-                        return (
-                            <View style={{ flexDirection: "row", justifyContent: "space-between", marginLeft: 35, marginRight: 35 }}>
-                                <Text style={{ fontSize: 20 }}>{a.ENGLISH}</Text>
-                                <Text style={{ fontSize: 20 }}>{a.TAAGRA}</Text>
-                            </View>
-                        )
-                    }
-                    )}
-                    <Text style={{textAlign: "center", marginTop: 10}}>{page}</Text>
-                    <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 30, marginBottom: 20 }}>
+                    <View style={{ marginBottom: 10 }}>
+                        {this.state.data.map(a => {
+                            return (
+                                <View style={{ flexDirection: "row", justifyContent: "space-between", marginLeft: 20, marginRight: 20 }}>
+                                    <Text style={{ fontSize: 20 }}>{a.ENGLISH}</Text>
+                                    <Text style={{ fontSize: 20 }}>{(a.TAAGRA != "") ? (a.TAAGRA) : ('*' + a.NOTES + '*')}</Text>
+                                </View>
+                            )
+                        }
+                        )}
+                    </View>
+                </ImageBackground>
+                <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
+                <ImageBackground source={require('../media/pagebg.jpg')} style={{ width: "100%" }}>
+
+                    <Text style={{ textAlign: "center", marginTop: 10, color: '#c2b280', fontSize: 20 }}>{page}</Text>
+                    <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 10, marginBottom: 20 }}>
                         <View style={{ marginRight: 5 }}>
                             <Button
-                                title="Previous page"
+                                title="Back"
                                 onPress={() => this._previousPage()}
                             />
                         </View>
                         <View style={{ marginLeft: 5 }}>
                             <Button
-                                title="Next page"
+                                title="Next"
                                 onPress={() => this._nextPage()}
 
                             />
                         </View>
                     </View>
-                </View>
+                </ImageBackground>
             </ScrollView>
         );
     }

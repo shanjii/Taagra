@@ -20,23 +20,30 @@ class Home extends Component {
     }
 
 
-
-
-
-
-
-
     render() {
         return (
-            <ScrollView style={{ backgroundColor: "#c2b280" }}>
+            <ScrollView style={{ backgroundColor: "black" }}>
                 <StatusBar barStyle="dark-content" backgroundColor='rgba(207, 102, 16, 0.0)' translucent={true} />
-                <View style={{ marginTop: 50 }}>
-                    <Text>Taagra</Text>
-                </View>
-                <Button
-                    title="Dictionary"
-                    onPress={() => this.props.navigation.navigate('Dictionary')}
-                />
+                <ImageBackground source={require('../media/pagebg.jpg')} style={{ width: "100%" }}>
+                    <View style={{ alignSelf: 'center', marginTop: 50, marginBottom: 30 }}>
+                        <Image source={require('../media/homebig.png')} />
+                    </View>
+                    <View style={{flexDirection: "row", alignSelf: "center", marginBottom: 10}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Dictionary')}>
+                            <Image source={require('../media/dictionary.png')} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Translate')}>
+                            <Image source={require('../media/translator.png')} />
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+                <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
+                <ImageBackground source={require('../media/mainbg.jpg')} style={{ width: "100%" }}>
+                    <View style={{ marginTop: 10 }}>
+                        <Text>Taagra</Text>
+                    </View>
+                </ImageBackground>
+                <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
             </ScrollView>
         );
     }
