@@ -23,27 +23,31 @@ class Home extends Component {
     render() {
         return (
             <ScrollView style={{ backgroundColor: "black" }}>
-                <StatusBar barStyle="dark-content" backgroundColor='rgba(207, 102, 16, 0.0)' translucent={true} />
+                <StatusBar barStyle="light-content" backgroundColor='rgba(207, 102, 16, 0.0)' translucent={true} />
                 <ImageBackground source={require('../media/pagebg.jpg')} style={{ width: "100%" }}>
                     <View style={{ alignSelf: 'center', marginTop: 50, marginBottom: 30 }}>
-                        <Image source={require('../media/homebig.png')} />
+                        <Image source={require('../media/title.png')} />
                     </View>
-                    <View style={{flexDirection: "row", alignSelf: "center", marginBottom: 10}}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Dictionary')}>
-                            <Image source={require('../media/dictionary.png')} />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Translate')}>
-                            <Image source={require('../media/translator.png')} />
-                        </TouchableOpacity>
+                    <View style={{ backgroundColor: 'rgba(207, 102, 16, 0.15)' }}>
+                        <View style={{ flexDirection: "row", alignSelf: "center", marginBottom: 0 }}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Dictionary')}>
+                                <Image source={require('../media/dictionary.png')} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Translate')}>
+                                <Image source={require('../media/translator.png')} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </ImageBackground>
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
                 <ImageBackground source={require('../media/mainbg.jpg')} style={{ width: "100%" }}>
-                    <View style={{ marginTop: 10 }}>
-                        <Text>Taagra</Text>
+                    <Image style={{ alignSelf: "center", marginTop: 20 }} source={require('../media/homebig.png')} />
+                    <View style={{ marginTop: 10, marginLeft: 20, marginRight: 20 }}>
+                        <Text style={{ fontSize: 20, textAlign: "center", marginBottom: 20 }}>Welcome to the home of the Ta'agra project. The goal of this project is to build off of the existing pieces of Ta'agra that are available in lore and create a more complete language that can be used by Elder Scrolls fans, roleplayers, fan lore writers, and mod makers. We hope you enjoy what we've created so far!</Text>
                     </View>
                 </ImageBackground>
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
+                <Image source={require('../media/pagebg.jpg')} style={{ width: "100%", height: 100 }} />
             </ScrollView>
         );
     }

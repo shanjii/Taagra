@@ -7764,13 +7764,6 @@
   },
   {
     "ENGLISH": "house",
-    "TAAGRA": "paj",
-    "TYPE": "n",
-    "SYNONYMS & RELATED WORDS": "shelter",
-    "NOTES": "A house"
-  },
-  {
-    "ENGLISH": "house",
     "TAAGRA": "pajith",
     "TYPE": "v",
     "SYNONYMS & RELATED WORDS": "houses, housing, shelter, shelters, sheltering",
@@ -18401,5 +18394,8 @@
     "TYPE": "n",
     "SYNONYMS & RELATED WORDS": "",
     "NOTES": ""
+  },
+  {
+    "TEST": "",
   }
 ]

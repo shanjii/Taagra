@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Text, View, StyleSheet, Button, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
 import dictionary from '../dictionary/dictionary.json'
 import * as Animatable from 'react-native-animatable'
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 let start;
 let end;
@@ -65,17 +66,19 @@ class wordList extends Component {
                 </ImageBackground>
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
                 <ImageBackground source={require('../media/mainbg.jpg')} style={{ width: '100%' }}>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5, marginLeft: 20, marginRight: 20, marginBottom: 10 }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 5, marginLeft: 40, marginRight: 40, marginBottom: 10 }}>
                         <Text style={{ fontSize: 30, alignSelf: "center" }}>English</Text>
                         <Text style={{ fontSize: 30, alignSelf: "center" }}>Ta'agra</Text>
                     </View>
-                    <View style={{ marginBottom: 10 }}>
+                    <View style={{ marginBottom: 2 }}>
                         {this.state.data.map(a => {
                             return (
-                                <View style={{ flexDirection: "row", justifyContent: "space-between", marginLeft: 20, marginRight: 20 }}>
-                                    <Text style={{ fontSize: 20 }}>{a.ENGLISH}</Text>
-                                    <Text style={{ fontSize: 20 }}>{(a.TAAGRA != "") ? (a.TAAGRA) : ('*' + a.NOTES + '*')}</Text>
-                                </View>
+                                <TouchableOpacity>
+                                    <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: 'rgba(207, 102, 16, 0.15)', marginLeft: 0, marginBottom: 2, marginRight: 0 }}>
+                                        <Text style={{ fontSize: 15, marginLeft: 40 }}>{a.ENGLISH}</Text>
+                                        <Text style={{ fontSize: 15, marginRight: 40 }}>{(a.TAAGRA != "") ? (a.TAAGRA) : ('*' + a.NOTES + '*')}</Text>
+                                    </View>
+                                </TouchableOpacity>
                             )
                         }
                         )}
@@ -84,7 +87,7 @@ class wordList extends Component {
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
                 <ImageBackground source={require('../media/pagebg.jpg')} style={{ width: "100%" }}>
 
-                    <Text style={{ textAlign: "center", marginTop: 10, color: '#c2b280', fontSize: 20 }}>{page}</Text>
+                    <Text style={{ textAlign: "center", marginTop: 5, color: '#c2b280', fontSize: 20 }}>{page}</Text>
                     <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 10, marginBottom: 20 }}>
                         <View style={{ marginRight: 5 }}>
                             <Button
