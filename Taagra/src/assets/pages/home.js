@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Text, View, StyleSheet, Button, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
 import dictionary from '../dictionary/dictionary.json'
+const deviceHeight = Dimensions.get('screen').height;
 
 let start;
 let end;
@@ -42,12 +43,12 @@ class Home extends Component {
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
                 <ImageBackground source={require('../media/mainbg.jpg')} style={{ width: "100%" }}>
                     <Image style={{ alignSelf: "center", marginTop: 20 }} source={require('../media/homebig.png')} />
-                    <View style={{ marginTop: 10, marginLeft: 20, marginRight: 20 }}>
-                        <Text style={{ fontSize: 20, textAlign: "center", marginBottom: 20 }}>Welcome to the home of the Ta'agra project. The goal of this project is to build off of the existing pieces of Ta'agra that are available in lore and create a more complete language that can be used by Elder Scrolls fans, roleplayers, fan lore writers, and mod makers. We hope you enjoy what we've created so far!</Text>
+                    <View style={{ marginTop: 10, marginLeft: 20, marginRight: 10 }}>
+                        <Text style={{ fontSize: 22, textAlign: "center", marginBottom: 30, marginTop: 20 }}>Welcome to the home of the Ta'agra project. The goal of this project is to build off of the existing pieces of Ta'agra that are available in lore and create a more complete language that can be used by Elder Scrolls fans, roleplayers, fan lore writers, and mod makers. We hope you enjoy what we've created so far!</Text>
                     </View>
                 </ImageBackground>
                 <Image style={{ position: 'relative', left: -12 }} source={require('../media/footer.png')} />
-                <Image source={require('../media/pagebg.jpg')} style={{ width: "100%", height: 100 }} />
+                <Image source={require('../media/pagebg.jpg')} style={{ width: "100%", height: deviceHeight*0.2 }} />
             </ScrollView>
         );
     }

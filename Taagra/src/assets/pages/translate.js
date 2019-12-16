@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Text, View, StyleSheet, Button, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
 import dictionary from '../dictionary/dictionary.json'
 import { TextInput } from 'react-native-gesture-handler';
+import Button from 'react-native-button';
+
 var hasWord = false
 
 class Translate extends Component {
@@ -64,26 +66,26 @@ class Translate extends Component {
                         <Text>Result in Ta'agra</Text>
                         {(this.state.font == 'Taagra') ?
                             (
-                                <TextInput multiline={true} autoCorrect={false} editable={false} style={{ backgroundColor: '#bf9b7a', color: 'black', fontSize: 30, borderColor: '#a67a53', borderWidth: 2, marginBottom: 10, height: 150, fontFamily: 'TaagraCalligraphy' }}>
+                                <TextInput multiline={true} autoCorrect={false} style={{ backgroundColor: '#bf9b7a', color: 'black', fontSize: 20, borderColor: '#a67a53', borderWidth: 2, marginBottom: 10, height: 150, fontFamily: 'TaagraCalligraphy' }}>
                                     {this.state.translated}
                                 </TextInput>
                             )
                             :
                             (
-                                <TextInput multiline={true} autoCorrect={false} editable={false} style={{ backgroundColor: '#bf9b7a', color: 'black', fontSize: 30, borderColor: '#a67a53', borderWidth: 2, marginBottom: 10, height: 150 }}>
+                                <TextInput multiline={true} autoCorrect={false} style={{ backgroundColor: '#bf9b7a', color: 'black', fontSize: 30, borderColor: '#a67a53', borderWidth: 2, marginBottom: 10, height: 150 }}>
                                     {this.state.translated}
                                 </TextInput>
                             )}
                         <View style={{ flexDirection: 'row', alignSelf: "center", marginTop: 5, marginBottom: 10 }}>
-                            <Button
-                                title="Show in Taagra"
-                                onPress={() => this._changeFontTaagra()}
-                            />
+                            <Button onPress={() => this._changeFontTaagra()} style={{color: 'black'}} containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: '#a67a53' }}
+                            >
+                                Show in Taagra
+                            </Button>
                             <View style={{ marginLeft: 30, marginRight: 30 }} />
-                            <Button
-                                title="Show in English"
-                                onPress={() => this._changeFontNormal()}
-                            />
+                            <Button onPress={() => this._changeFontNormal()} style={{color: 'black'}} containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: '#a67a53' }}
+                            >
+                                Show in English
+                            </Button>
                         </View>
                         <Text>Type in English here</Text>
                         <TextInput
@@ -91,10 +93,10 @@ class Translate extends Component {
                             onChangeText={(text) => this.setState({ text })}
                             style={{ backgroundColor: '#bf9b7a', fontSize: 20, borderColor: '#a67a53', borderWidth: 2, marginBottom: 10 }} />
                         <View style={{ marginLeft: 23, marginRight: 23 }}>
-                            <Button
-                                title="Translate"
-                                onPress={() => this._translate()}
-                            />
+                            <Button onPress={() => this._translate()} style={{color: 'black'}} containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: '#a67a53' }}
+                            >
+                                Translate
+                            </Button>
                         </View>
                         <Text style={{ marginTop: 20 }}>Important notes:</Text>
                         <Text>The translator cannot currently correct for sentence structure changes resulting from Lative Case (to/+ali), Ablative Case (from/+iitay), Future Tense (will/+se), or Negative Verbs (not/+oh). You will need to make these changes manually.</Text>

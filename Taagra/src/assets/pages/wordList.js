@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Text, View, StyleSheet, Button, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, StatusBar, Header, Image, ScrollView, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ActivityIndicator, ImageBackground } from 'react-native';
 import dictionary from '../dictionary/dictionary.json'
 import * as Animatable from 'react-native-animatable'
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import Button from 'react-native-button';
+
 
 let start;
 let end;
@@ -26,7 +28,7 @@ class wordList extends Component {
 
     componentDidMount = () => {
         start = 0;
-        end = 20;
+        end = 25;
         page = 1;
         this.setState({ data: dictionary.slice(start, end) })
     }
@@ -34,7 +36,7 @@ class wordList extends Component {
     _nextPage = () => {
         if (page != 132) {
             start = end;
-            end = end + 20;
+            end = end + 25;
             page = page + 1;
             this.setState({ data: dictionary.slice(start, end) })
         }
@@ -42,8 +44,8 @@ class wordList extends Component {
 
     _previousPage = () => {
         if (start != 0) {
-            start = start - 20;
-            end = end - 20;
+            start = start - 25;
+            end = end - 25;
             this.setState({ data: dictionary.slice(start, end) })
         }
         if (page != 1) {
@@ -91,16 +93,19 @@ class wordList extends Component {
                     <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 10, marginBottom: 20 }}>
                         <View style={{ marginRight: 5 }}>
                             <Button
-                                title="Back"
+                                containerStyle={{ padding: 10, height: 45, overflow: 'hidden', backgroundColor: '#a67a53' }}
                                 onPress={() => this._previousPage()}
-                            />
+                                style={{ fontSize: 20, color: 'black' }}>
+                                Back
+                             </Button>
                         </View>
                         <View style={{ marginLeft: 5 }}>
                             <Button
-                                title="Next"
+                                containerStyle={{ padding: 10, height: 45, overflow: 'hidden', backgroundColor: '#a67a53' }}
                                 onPress={() => this._nextPage()}
-
-                            />
+                                style={{ fontSize: 20, color: 'black' }}>
+                                Next
+                             </Button>
                         </View>
                     </View>
                 </ImageBackground>

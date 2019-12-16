@@ -17,7 +17,7 @@ const main = createStackNavigator({
     }
 },
     {
-        transitionConfig: () => fromRight(),
+        transitionConfig: () => fromRight(500),
     }
 );
 
